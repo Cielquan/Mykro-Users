@@ -31,6 +31,7 @@ import os
 import warnings
 
 from pathlib import Path
+from typing import Union
 
 from dotenv import load_dotenv
 
@@ -44,10 +45,26 @@ else:
     warnings.warn("No .env file found.")
 
 
-def get_env_var(var_name, default=None, rv_type_class=str, *, raise_no_default=True):
-    """Func for importing environment variables"""
-    var = os.environ.get(var_name, default)
+EnvVarTypes = Union[str, int, float, bool, None]
 
+
+def get_env_var(
+    var_name: str,
+    default: EnvVarTypes = None,
+    rv_type: type = str,
+    *,
+    raise_no_default: bool = os.getenv("FLASK_CONFIG", "").title() == "Prod",
+) -> EnvVarTypes:
+    """Func for importing environment variables
+
+    :param var_name: Name of the environment variable.
+    :param default: Default value if no value is found for :param var_name:.
+    :param rv_type: Type the value of the environment variable should be changed into.
+    :param raise_no_default: If an exception should be thrown when no value is found for
+                             :param var_name: and :param default: is not set.
+                             Defaults to `True` when in production environment and to
+                             `False` otherwise.
+    """
     msg_no_default = (
         f"Environment variable '{var_name}' not set or empty and no "
         "default value given."
@@ -56,20 +73,22 @@ def get_env_var(var_name, default=None, rv_type_class=str, *, raise_no_default=T
         f"Environment variable '{var_name}' has an invalid boolean value."
     )
 
-    if var == "" or var is None:
+    var = os.getenv(var_name, default)
+
+    if (var == "" or var is None) and default is None:
         if raise_no_default:
             raise KeyError(msg_no_default) from None
         warnings.warn(msg_no_default)
         return None
 
-    if rv_type_class is bool:
-        if var.lower() in {"1", "y", "yes", "t", "true"}:
+    if rv_type is bool:
+        if str(var).lower() in {"1", "y", "yes", "t", "true"}:
             return True
-        if var.lower() in {"0", "n", "no", "f", "false"}:
+        if str(var).lower() in {"0", "n", "no", "f", "false"}:
             return False
         raise KeyError(msg_invalid_bool) from None
 
-    return rv_type_class(var)
+    return rv_type(var)
 
 
 class Config:  # pylint: disable=R0903
