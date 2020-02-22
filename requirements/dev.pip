@@ -1,0 +1,4 @@
+-r app.pip
+-r testing.pip
+-r ../docs/source/requirements.pip
+httpie==2.0.0
