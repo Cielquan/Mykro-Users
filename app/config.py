@@ -53,7 +53,7 @@ def get_env_var(
     default: EnvVarTypes = None,
     rv_type: type = str,
     *,
-    raise_no_default: bool = os.getenv("FLASK_CONFIG", "").title() == "Prod",
+    raise_no_default: bool = os.getenv("FLASK_CONFIG", "Prod").title() == "Prod",
 ) -> EnvVarTypes:
     """Func for importing environment variables
 

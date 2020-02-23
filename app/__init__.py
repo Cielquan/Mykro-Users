@@ -38,7 +38,7 @@ def app_factory():
     """Factory for creating an application instance"""
     app = Flask(__name__)
 
-    config_name = os.environ.get("FLASK_CONFIG", "Dev")
+    config_name = os.getenv("FLASK_CONFIG", "Prod")
     app.config.from_object(getattr(config, config_name.title() + "Config"))
 
     return app
