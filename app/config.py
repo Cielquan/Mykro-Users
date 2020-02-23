@@ -31,7 +31,7 @@ import os
 import warnings
 
 from pathlib import Path
-from typing import Union
+from typing import Optional, Union
 
 from dotenv import load_dotenv
 
@@ -42,7 +42,7 @@ ENV_FILE = Path(APP_BASEDIR, ".env")
 if ENV_FILE.exists():
     load_dotenv(ENV_FILE)
 else:
-    warnings.warn("No .env file found.")
+    print("WARNING: No .env file found.")
 
 
 EnvVarTypes = Union[str, int, float, bool, None]
@@ -53,7 +53,7 @@ def get_env_var(
     default: EnvVarTypes = None,
     rv_type: type = str,
     *,
-    raise_no_default: bool = os.getenv("FLASK_CONFIG", "Prod").title() == "Prod",
+    raise_no_default: Optional[bool] = None,
 ) -> EnvVarTypes:
     """Func for importing environment variables
 
@@ -65,6 +65,9 @@ def get_env_var(
                              Defaults to `True` when in production environment and to
                              `False` otherwise.
     """
+    if raise_no_default is None:
+        raise_no_default = os.getenv("FLASK_CONFIG", "Prod").title() == "Prod"
+
     msg_no_default = (
         f"Environment variable '{var_name}' not set or empty and no "
         "default value given."
