@@ -1,27 +1,17 @@
-===========
-Mykro-Users
-===========
+.. This file 'badges.rst' created 2020-02-20 is part of the project/program 'Mykro-Users'.
+.. Copyright (c) 2020 Christian Riedel, see LICENSE for more details
 
 | |license| |black|
-|
+
 | |travis| |codecov|
 | |docs|
-|
+
+| |py_versions| |implementations|
+| |pypi| |status| |format| |wheel| |downloads|
+
 | |release| |commits_since| |last_commit|
 | |stars| |forks| |contributors|
-|
 
-
-Part of Mykro Micro-services. Service for user management.
-
-**Project aborted.**
-
-Documentation: https://mykro-users.readthedocs.io.
-
-
-.. .############################### LINKS ###############################
-
-.. BADGES START
 
 .. info block
 .. |license| image:: https://img.shields.io/github/license/Cielquan/mykro-users.svg?style=flat-square
@@ -45,6 +35,36 @@ Documentation: https://mykro-users.readthedocs.io.
 .. |docs| image:: https://img.shields.io/readthedocs/mykro-users/latest.svg?style=flat-square&logo=read-the-docs&logoColor=white
     :alt: Read the Docs (latest) - Status
     :target: https://mykro-users.readthedocs.io/en/latest/?badge=latest
+
+
+.. PyPI block
+.. |py_versions| image:: https://img.shields.io/pypi/pyversions/mykro-users.svg?style=flat-square&logo=python&logoColor=FBE072
+    :alt: PyPI - Python versions supported
+    :target: https://pypi.org/project/mykro-users/
+
+.. |implementations| image:: https://img.shields.io/pypi/implementation/mykro-users.svg?style=flat-square&logo=python&logoColor=FBE072
+    :alt: PyPI - Implementations supported
+    :target: https://pypi.org/project/mykro-users/
+
+.. |pypi| image:: https://img.shields.io/pypi/v/mykro-users.svg?style=flat-square&logo=pypi&logoColor=FBE072
+    :alt: PyPI - Package latest release
+    :target: https://pypi.org/project/mykro-users/
+
+.. |status| image:: https://img.shields.io/pypi/status/mykro-users.svg?style=flat-square&logo=pypi&logoColor=FBE072
+    :alt: PyPI - Package stability
+    :target: https://pypi.org/project/mykro-users/
+
+.. |format| image:: https://img.shields.io/pypi/format/mykro-users.svg?style=flat-square&logo=pypi&logoColor=FBE072
+    :alt: PyPI - Format
+    :target: https://pypi.org/project/mykro-users/
+
+.. |wheel| image:: https://img.shields.io/pypi/wheel/mykro-users.svg?style=flat-square&logo=pypi&logoColor=FBE072
+    :alt: PyPI - Wheel
+    :target: https://pypi.org/project/mykro-users/
+
+.. |downloads| image:: https://img.shields.io/pypi/dm/mykro-users.svg?style=flat-square&logo=pypi&logoColor=FBE072
+    :target: https://pypi.org/project/mykro-users/
+    :alt: PyPI - Monthly downloads
 
 
 .. Github block
@@ -71,5 +91,3 @@ Documentation: https://mykro-users.readthedocs.io.
 .. |contributors| image:: https://img.shields.io/github/contributors/Cielquan/mykro-users.svg?style=flat-square&logo=github
     :alt: Github Contributors
     :target: https://github.com/Cielquan/mykro-users/graphs/contributors
-
-..  BADGES END

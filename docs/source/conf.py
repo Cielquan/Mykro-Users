@@ -27,7 +27,7 @@
     :copyright: (c) 2020 Christian Riedel
     :license: GPL-3.0, see LICENSE.rst for more details
 """
-#: pylint: disable=C0103
+# pylint: disable=C0103
 import os
 import sys
 
@@ -51,7 +51,7 @@ YEAR = f"{TODAY.year}"
 project = "Mykro-Users"
 author = "Christian Riedel"
 release_year = "2020"
-copyright = (  #: pylint: disable=W0622
+copyright = (  # pylint: disable=W0622
     f"{release_year}{('-' + YEAR) if YEAR != release_year else ''}, " + author
 )
 # #: The full version, including alpha/beta/rc tags

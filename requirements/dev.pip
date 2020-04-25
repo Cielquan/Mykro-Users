@@ -2,3 +2,4 @@
 -r testing.pip
 -r ../docs/source/requirements.pip
 httpie==2.0.0
+flask-debugtoolbar==0.11.0

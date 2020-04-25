@@ -1,7 +1,7 @@
 # ======================================================================================
 # Copyright (c) 2020 Christian Riedel
 #
-# This file 'manage.py' created 2020-02-22
+# This file 'security.py' created 2020-02-22
 # is part of the project/program 'Mykro-Users'.
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -19,16 +19,22 @@
 # Github: https://github.com/Cielquan/
 # ======================================================================================
 """
-    manage
-    ~~~~~~
+    security
+    ~~~~~~~~
 
-    Manage the application in 'app' package.
+    Security related stuff
 
     :copyright: (c) 2020 Christian Riedel
     :license: GPLv3, see LICENSE for more details
 """
-from app import cli, create_app
-
-
-app = create_app()  # pylint: disable=C0103
-cli.register(app)
+# from myapp import dp
+# from myapp.security import get_available_organisations
+#
+#
+# class Project(db.Model):
+#     ...
+#
+#     @property
+#     def query(self):
+#         org_query = get_available_organisations()
+#         return db.Query(self).filter(Project.organization.in_(org_query))

@@ -100,6 +100,17 @@ class Config:  # pylint: disable=R0903
     DEBUG = False
     TESTING = False
     SECRET_KEY = get_env_var("SECRET_KEY")
+    JWT_SECRET_KEY = get_env_var("JWT_SECRET_KEY")
+
+    SQLALCHEMY_TRACK_MODIFICATIONS = False
+    MONGO_URI = get_env_var("MONGO_DATABASE_URL", "mongodb://mongo:27017/users")
+    SQLALCHEMY_DATABASE_URI = os.environ.get(  # TODO 23.02.2020: which DB to use
+        "DATABASE_URL", "sqlite:///" + os.path.join(APP_BASEDIR, "users.sqlite")
+    )
+
+    BCRYPT_LOG_ROUNDS = 13
+    ACCESS_TOKEN_EXPIRATION = 900  # 15 minutes
+    REFRESH_TOKEN_EXPIRATION = 86400 * 14  # 14 days
 
 
 class DevConfig(Config):  # pylint: disable=R0903
@@ -109,6 +120,9 @@ class DevConfig(Config):  # pylint: disable=R0903
     SECRET_KEY = get_env_var(
         "SECRET_KEY", "some-funny-secret-string-would-be-nice-to-brighten-the-devs-mood"
     )
+    JWT_SECRET_KEY = get_env_var("JWT_SECRET_KEY", SECRET_KEY)
+
+    BCRYPT_LOG_ROUNDS = 4
 
 
 class TestConfig(Config):  # pylint: disable=R0903
@@ -118,6 +132,12 @@ class TestConfig(Config):  # pylint: disable=R0903
     SECRET_KEY = get_env_var(
         "SECRET_KEY", "some-funny-secret-string-would-be-nice-to-brighten-the-devs-mood"
     )
+    JWT_SECRET_KEY = get_env_var("JWT_SECRET_KEY", SECRET_KEY)
+    SQLALCHEMY_DATABASE_URI = "sqlite://"  # TODO 23.02.2020: how DB use for testing
+
+    BCRYPT_LOG_ROUNDS = 4
+    ACCESS_TOKEN_EXPIRATION = 3
+    REFRESH_TOKEN_EXPIRATION = 3
 
 
 class ProdConfig(Config):  # pylint: disable=R0903

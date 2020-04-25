@@ -1,7 +1,7 @@
 # ======================================================================================
 # Copyright (c) 2020 Christian Riedel
 #
-# This file 'manage.py' created 2020-02-22
+# This file '__init__.py' created 2020-02-23
 # is part of the project/program 'Mykro-Users'.
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -19,16 +19,11 @@
 # Github: https://github.com/Cielquan/
 # ======================================================================================
 """
-    manage
-    ~~~~~~
+    tests
+    ~~~~~
 
-    Manage the application in 'app' package.
+    Tests for app
 
     :copyright: (c) 2020 Christian Riedel
     :license: GPLv3, see LICENSE for more details
 """
-from app import cli, create_app
-
-
-app = create_app()  # pylint: disable=C0103
-cli.register(app)

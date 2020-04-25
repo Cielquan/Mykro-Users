@@ -1,7 +1,7 @@
 # ======================================================================================
 # Copyright (c) 2020 Christian Riedel
 #
-# This file 'manage.py' created 2020-02-22
+# This file 'admin.py' created 2020-02-23
 # is part of the project/program 'Mykro-Users'.
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -19,16 +19,43 @@
 # Github: https://github.com/Cielquan/
 # ======================================================================================
 """
-    manage
-    ~~~~~~
+    app.admin
+    ~~~~~~~~~
 
-    Manage the application in 'app' package.
+    admin interface
 
     :copyright: (c) 2020 Christian Riedel
     :license: GPLv3, see LICENSE for more details
 """
-from app import cli, create_app
+from flask import current_app
+from flask_admin.contrib.sqla import ModelView  # type: ignore
+
+from app import bcrypt
 
 
-app = create_app()  # pylint: disable=C0103
-cli.register(app)
+class UsersAdminView(ModelView):
+    column_searchable_list = (
+        "username",
+        "email",
+    )
+    column_editable_list = (
+        "username",
+        "email",
+        "created_at",
+    )
+    column_filters = (
+        "username",
+        "email",
+    )
+    column_sortable_list = (
+        "username",
+        "email",
+        "active",
+        "created_at",
+    )
+    column_default_sort = ("created_at", True)
+
+    def on_model_change(self, form, model, is_created):
+        model.password = bcrypt.generate_password_hash(
+            model.password, current_app.config.get("BCRYPT_LOG_ROUNDS")
+        ).decode()

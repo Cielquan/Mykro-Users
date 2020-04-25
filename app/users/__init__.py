@@ -1,7 +1,7 @@
 # ======================================================================================
 # Copyright (c) 2020 Christian Riedel
 #
-# This file 'manage.py' created 2020-02-22
+# This file '__init__.py' created 2020-02-22
 # is part of the project/program 'Mykro-Users'.
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -14,21 +14,21 @@
 # GNU General Public License for more details.
 #
 # You should have received a copy of the GNU General Public License
-# along with this program. If not, see <https://www.gnu.org/licenses/>.
-#
+# along with this program. If not, see <https://www.gnu.org/licenses/>.#
 # Github: https://github.com/Cielquan/
 # ======================================================================================
 """
-    manage
-    ~~~~~~
+    app.users
+    ~~~~~~~~~
 
-    Manage the application in 'app' package.
+    'users' blueprint
 
     :copyright: (c) 2020 Christian Riedel
     :license: GPLv3, see LICENSE for more details
 """
-from app import cli, create_app
+from flask import Blueprint
+
+from ..users import routes
 
 
-app = create_app()  # pylint: disable=C0103
-cli.register(app)
+bp = Blueprint("users", __name__, url_prefix="/api/users")
